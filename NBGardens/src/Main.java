@@ -1,4 +1,4 @@
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -7,32 +7,49 @@ import javax.swing.JLabel;
 
 public class Main extends JFrame {
 
+	static Orderlist ol = new Orderlist();
+	static String orders;
 	
-	
-	private static void initUI(){
-		JFrame wind = new JFrame("SimpleWindow");
-		JLabel header = new JLabel("ORDER LIST");
-		JButton b1 = new JButton("Button One");
+	//Creates the initial window
+	static void initMainUI(){
+		JFrame mainWind = new JFrame("SimpleWindow");
+		JLabel header = new JLabel("WAREHOUSE MENU");
+		JButton sOW = new JButton("Show Orders Waiting");
 		JButton b2 = new JButton("Button Two");
 		
-		header.setBounds(10,0, 100, 50);
-		b1.setBounds(10, 100, 100, 50);
-	    b2.setBounds(120, 100, 100,50);
+		header.setBounds(10,0, 150, 50);
+		sOW.setBounds(10, 100, 200, 50);
+		sOW.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				//Opens a new window and closes the current one
+				ol.showOrdersWaiting();
+				mainWind.setVisible(false);
+			}
+		});
+	    b2.setBounds(220, 100, 200,50);
 		
-		wind.setSize(500, 500);
-		wind.setLayout(null);
-		wind.add(header);
-		wind.add(b1);
-		wind.add(b2);
+	    mainWind.setSize(500, 500);
+	    mainWind.setLayout(null);
+	    mainWind.add(header);
+	    mainWind.add(sOW);
+	    mainWind.add(b2);
 		
-		wind.setVisible(true);
+	    mainWind.setVisible(true);
 		
 	}
 	
+	//Used for re-opening the main window from other places
+	public void mainUI(){
+		
+		initMainUI();
+		
+	}
+	
+	//Main method
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		initUI();
+		initMainUI();
 				
 	}
 
