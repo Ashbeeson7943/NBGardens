@@ -10,33 +10,25 @@ import java.util.ArrayList;
 public class Orderlist {
 
 	Main m = new Main();
+	PickedOrder po = new PickedOrder();
 	ArrayList<String> orders = new ArrayList<>();
 	ArrayList<String> oL = new ArrayList<>();
-		
+
+	
 	public void showOrdersWaiting(){
 		
 		initOrderUI();
  	
 	}
 	
-	public void showPickedOrder(){
-		
-	}
-
-	public void addStock(){
-		
-	}
-	
-	void updateInventory(){
-		
-	}
-	
 	void addOrders(){
-		
+		System.out.println("ORDERS ADDED");
 		orders.add("order 1");	
 		orders.add("order 2");
 		orders.add("order 3");
 		orders.add("order 4");
+		orders.add("order 5");
+		orders.add("order 6");
 	}
 	
 	void getOrders(){
@@ -53,7 +45,10 @@ public class Orderlist {
 		
 	}
 	
-	void storeInfo(){
+	public void storeInfo(){
+
+		po.order = oL.get(0);
+		
 		
 	}
 	
@@ -65,39 +60,51 @@ public class Orderlist {
 		JTextArea orderList = new JTextArea();
 		JButton pick = new JButton("PICK");	
 		JButton ref = new JButton("REFRESH");
+		JButton back = new JButton("BACK");		
 		
+		addOrders();
+		getOrders();
 		
-				
 		header.setBounds(10,0, 100, 50);		
 		
 		orderList.setBounds(10, 50, 200, 300);
-		
+		orderList.setEditable(false);
 		
 		pick.setBounds(100, 0, 75, 50);
 		pick.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				//Action
+				System.out.println("PICKED");
+				storeInfo();
 				pickOrder();
-				m.initMainUI();
+			}
+		});
+		
+		back.setBounds(180, 0, 75, 50);
+		back.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				//Action
+				m.mainUI();
 				orderWind.setVisible(false);
 			}
 		});
-		addOrders();
-		getOrders();
-			
+		
 		ref.setBounds(260, 0, 75, 50);
 		ref.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				//Action
+				System.out.println("REFRESHED");
+				orderList.setText("");
 				for(int i = 0; i < oL.size(); i++){
 					orderList.append(oL.get(i) + "\n");
 				}
 			}
 		});
-		
+			
 		orderWind.setSize(400, 400);
 		orderWind.setLayout(null);
 		orderWind.add(pick);
+		orderWind.add(back);
 		orderWind.add(ref);
 		orderWind.add(header);
 		orderWind.add(orderList);
@@ -106,9 +113,5 @@ public class Orderlist {
 		
 	}
 	
-	void initPickOrderUI(){
-		
-	
-	}
 	
 }
