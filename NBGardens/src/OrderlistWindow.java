@@ -29,9 +29,10 @@ public class OrderlistWindow {
 	
 	void addOrders(){
 		System.out.println("ORDERS ADDED");
-		customerOrder.add(new CustomerOrder(1));	
+		customerOrder.add(new CustomerOrder(1, "Gnome"));	
 		customerOrder.add(new CustomerOrder(2));
 		customerOrder.add(new CustomerOrder(3));
+		customerOrder.add(new CustomerOrder(4));
 
 	}
 	
@@ -43,14 +44,6 @@ public class OrderlistWindow {
 		
 	}
 	
-	public void storeInfo(){
-
-		System.out.println("STORED NOTHING");
-	    
-		
-	}
-	
-
 	void initOrderUI(){
 		
 		JFrame orderWind = new JFrame("OrderWindow");
@@ -76,8 +69,9 @@ public class OrderlistWindow {
 			public void actionPerformed(ActionEvent e){
 				//Action
 				System.out.println("PICKED");
-				storeInfo();
 				pickOrder();
+				MainWindow.getWindow().showWindow();
+				orderWind.setVisible(false);
 			}
 		});
 		

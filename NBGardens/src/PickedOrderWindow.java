@@ -56,7 +56,7 @@ public class PickedOrderWindow {
 				//Action
 				System.out.println("REFRESHED PICK");
 			
-				orderScreen.append("Order ID: " + pickedOrder.get(0).orderID + "\n");
+				orderScreen.append("Order ID: " + pickedOrder.get(0).orderID + "\n" + "Item: " + pickedOrder.get(0).orderItemName + "\n");
 			}
 		});
 			
