@@ -14,10 +14,11 @@ public class PickedOrderWindow {
 	public static String order;
 	
 	ArrayList<CustomerOrder> customerOrder;
+	ArrayList<CustomerOrder> pickedOrder;
 	
-	PickedOrderWindow(ArrayList<CustomerOrder> co){
+	PickedOrderWindow(ArrayList<CustomerOrder> co, ArrayList<CustomerOrder> po){
 		customerOrder = co;
-		
+		pickedOrder = po;
 	}
 	
 	public void initUI(){
@@ -44,8 +45,7 @@ public class PickedOrderWindow {
 		back.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				//Action
-				m =  new MainWindow();
-				m.mainUI();
+				MainWindow.getWindow().showWindow();
 				pickWind.setVisible(false);
 			}
 		});
@@ -55,8 +55,8 @@ public class PickedOrderWindow {
 			public void actionPerformed(ActionEvent e){
 				//Action
 				System.out.println("REFRESHED PICK");
-				System.out.println(order);
-				orderScreen.append(order);
+			
+				orderScreen.append("Order ID: " + pickedOrder.get(0).orderID + "\n");
 			}
 		});
 			

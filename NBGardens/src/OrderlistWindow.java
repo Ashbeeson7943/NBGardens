@@ -14,10 +14,11 @@ public class OrderlistWindow {
 	ArrayList<String> oL = new ArrayList<>();
 	boolean hasStarted = true;
 	ArrayList<CustomerOrder> customerOrder;
+	ArrayList<CustomerOrder> pickedOrder;
 	
-	OrderlistWindow(ArrayList<CustomerOrder> co){
+	OrderlistWindow(ArrayList<CustomerOrder> co, ArrayList<CustomerOrder> po){
 		customerOrder = co;
-		
+		pickedOrder = po;
 	}
 	
 	public void showOrdersWaiting(){
@@ -29,22 +30,16 @@ public class OrderlistWindow {
 	void addOrders(){
 		System.out.println("ORDERS ADDED");
 		customerOrder.add(new CustomerOrder(1));	
-		customerOrder.add(new CustomerOrder(1));
-		customerOrder.add(new CustomerOrder(1));
+		customerOrder.add(new CustomerOrder(2));
+		customerOrder.add(new CustomerOrder(3));
 
 	}
 	
-	/*void getOrders(){
-				
-		for (int i = 0; i < orders.size(); i++) {
-		    oL.add(String.valueOf(customerOrder.get(i).orderID));
-		}
-
-	}*/
 	
 	void pickOrder(){
 		
-		
+		pickedOrder.add(customerOrder.get(0));
+		customerOrder.remove(0);
 		
 	}
 	
@@ -70,7 +65,6 @@ public class OrderlistWindow {
 		 hasStarted = false;
 		}
 		
-		//getOrders();
 		
 		header.setBounds(10,0, 100, 50);		
 		
@@ -91,8 +85,10 @@ public class OrderlistWindow {
 		back.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				//Action
-				m  = new MainWindow();
-				m.mainUI();
+				//m  = new MainWindow(customerOrder,pickedOrder);
+				//m.mainUI();
+				
+				MainWindow.getWindow().showWindow();
 				orderWind.setVisible(false);
 			}
 		});
@@ -104,7 +100,7 @@ public class OrderlistWindow {
 				System.out.println("REFRESHED");
 				orderList.setText("");
 				for(int i = 0; i < customerOrder.size(); i++){
-					orderList.append(customerOrder.get(i).orderID + "\n");
+					orderList.append("Order ID: " + customerOrder.get(i).orderID + "\n");
 				}
 			}
 		});

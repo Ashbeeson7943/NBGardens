@@ -8,19 +8,45 @@ import javax.swing.JLabel;
 
 public class MainWindow extends JFrame {
 
+	public static MainWindow mainWindow = null;
+	
 	private ArrayList<CustomerOrder> co;
+	private ArrayList<CustomerOrder> po;
 	private OrderlistWindow ol;
-	private PickedOrderWindow po;
+	private PickedOrderWindow pow;
+	
+	JFrame mainWind;
 	
 	MainWindow() {
+		po = new ArrayList<>();
 		co = new ArrayList<>();
-		ol = new OrderlistWindow(co);
-		po = new PickedOrderWindow(co);
+		ol = new OrderlistWindow(co,po);
+		pow = new PickedOrderWindow(co,po);
+	}
+	
+	public static MainWindow getWindow() {
+		
+		if (mainWindow == null) {
+			mainWindow = new MainWindow();
+		}
+		
+		return mainWindow;
+	}
+	
+	MainWindow(ArrayList<CustomerOrder> co, ArrayList<CustomerOrder> po) {
+		
+		this.po = po;
+		this.co = co;
+	}
+	
+	public void showWindow() {
+		
+		mainWind.setVisible(true);
 	}
 	
 	//Creates the initial window
 	 void initMainUI(){
-		JFrame mainWind = new JFrame("WareHouse System");
+		mainWind = new JFrame("WareHouse System");
 		JLabel header = new JLabel("WAREHOUSE MENU");
 		JButton sOW = new JButton("Show Orders Waiting");
 		JButton sPO = new JButton("Show order to be picked");
@@ -38,7 +64,8 @@ public class MainWindow extends JFrame {
 		sPO.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				//Opens a new window and closes the current one
-				po.initUI();
+				System.out.println("Size: " + po.size());
+				pow.initUI();
 				mainWind.setVisible(false);
 			}
 		});
