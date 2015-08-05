@@ -24,7 +24,6 @@ public class MainWindow extends JFrame {
 		jdbc.accessBD();
 		co = jdbc.co;
 		po = new ArrayList<>();
-		//co = new ArrayList<>();
 		ol = new OrderlistWindow(co,po);
 		pow = new PickedOrderWindow(co,po);
 	}
@@ -72,7 +71,6 @@ public class MainWindow extends JFrame {
 		sPO.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				//Opens a new window and closes the current one
-				System.out.println("Size: " + po.size());
 				pow.initUI();
 				mainWind.setVisible(false);
 			}

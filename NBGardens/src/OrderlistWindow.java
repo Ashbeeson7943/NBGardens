@@ -62,8 +62,6 @@ public class OrderlistWindow {
 		back.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				//Action
-				//m  = new MainWindow(customerOrder,pickedOrder);
-				//m.mainUI();
 
 				MainWindow.getWindow().showWindow();
 				orderWind.setVisible(false);
@@ -74,12 +72,18 @@ public class OrderlistWindow {
 		ref.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				//Action
-				System.out.println("REFRESHED");
-				orderList.setText("");
-				for(int i = 0; i < customerOrder.size(); i++){
-					orderList.append("Order ID: " + customerOrder.get(i).orderID + "\n");
+				if(customerOrder.size() > 0){
+					System.out.println("REFRESHED");
+					orderList.setText("");
+					for(int i = 0; i < customerOrder.size(); i++){
+						orderList.append("Order ID: " + customerOrder.get(i).orderID + "\n");
+					}
+				}
+				else{
+					System.out.println("NO MORE ORDERS");	
 				}
 			}
+
 		});
 
 		orderWind.setSize(400, 400);
