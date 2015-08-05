@@ -9,8 +9,6 @@ import java.util.ArrayList;
 
 public class PickedOrderWindow {
 
-	MainWindow m;
-
 	ArrayList<CustomerOrder> customerOrder;
 	ArrayList<CustomerOrder> pickedOrder;
 

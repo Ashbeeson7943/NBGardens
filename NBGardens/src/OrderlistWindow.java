@@ -9,9 +9,7 @@ import java.util.ArrayList;
 
 public class OrderlistWindow {
 
-	MainWindow m;
 	ArrayList<String> orders = new ArrayList<>();
-	boolean hasStarted = true;
 	ArrayList<CustomerOrder> customerOrder;
 	ArrayList<CustomerOrder> pickedOrder;
 
@@ -25,16 +23,6 @@ public class OrderlistWindow {
 		initOrderUI();
 
 	}
-
-	void addOrders(){
-		System.out.println("ORDERS ADDED");
-		customerOrder.add(new CustomerOrder(1, "Gnome"));	
-		customerOrder.add(new CustomerOrder(2));
-		customerOrder.add(new CustomerOrder(3));
-		customerOrder.add(new CustomerOrder(4));
-
-	}
-
 
 	void pickOrder(){
 
@@ -52,10 +40,6 @@ public class OrderlistWindow {
 		JButton ref = new JButton("REFRESH");
 		JButton back = new JButton("BACK");		
 
-		if(hasStarted){
-			addOrders();
-			hasStarted = false;
-		}
 
 
 		header.setBounds(10,0, 100, 50);		

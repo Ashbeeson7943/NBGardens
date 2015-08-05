@@ -3,6 +3,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 
 public class JDBC {
@@ -15,9 +16,10 @@ public class JDBC {
 
 	Connection conn = null;
 	Statement stmt = null;
+	ArrayList<CustomerOrder> co;
 
 	public void accessBD() {
-
+		co = new ArrayList<>();
 		try {
 			Class.forName("JDBC");
 			System.out.println("Connecting to database...");
@@ -55,7 +57,8 @@ public class JDBC {
 			while (rs.next()) {
 				int id = rs.getInt("itemid");
 				String name = rs.getString("itemName");
-				System.out.println("ID: " + id + ", name: " + name);
+				co.add(new CustomerOrder(id, name));
+				System.out.println("Added from database");
 			}
 			rs.close();
 		} catch(Exception e){

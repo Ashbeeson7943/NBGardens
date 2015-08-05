@@ -18,8 +18,12 @@ public class MainWindow extends JFrame {
 	JFrame mainWind;
 
 	MainWindow() {
+		
+		JDBC jdbc = new JDBC();
+		jdbc.accessBD();
+		co = jdbc.co;
 		po = new ArrayList<>();
-		co = new ArrayList<>();
+		//co = new ArrayList<>();
 		ol = new OrderlistWindow(co,po);
 		pow = new PickedOrderWindow(co,po);
 	}
@@ -32,7 +36,9 @@ public class MainWindow extends JFrame {
 
 		return mainWindow;
 	}
-
+	MainWindow(ArrayList<CustomerOrder> co) {
+		this.co = co;
+	}
 	//Used for transferring the orders between pages so they are not destroyed
 	MainWindow(ArrayList<CustomerOrder> co, ArrayList<CustomerOrder> po) {
 
