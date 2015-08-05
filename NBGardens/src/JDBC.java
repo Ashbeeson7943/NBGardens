@@ -8,7 +8,7 @@ import java.sql.Statement;
 public class JDBC {
 
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-	static final String DB_URL = "jdbc:mysql://localhost/ItemDatabase";
+	static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/mydb";
 
 	static final String USER = "root";
 	static final String PASS = "netbuilder";
@@ -19,7 +19,7 @@ public class JDBC {
 	public void accessBD() {
 
 		try {
-			Class.forName( "com.mysql.jdbc.Driver");
+			Class.forName( "JDBC");
 			System.out.println("Connecting to database...");
 			conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
@@ -48,7 +48,7 @@ public class JDBC {
 		try{
 			System.out.println("Creating statement...");
 			stmt = conn.createStatement();
-			String sql2 = "SELECT id, name, date FROM Languages";
+			String sql2 = "SELECT id, name";
 			ResultSet rs = stmt.executeQuery(sql2);
 			while (rs.next()) {
 				int id = rs.getInt("id");
