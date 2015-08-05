@@ -11,8 +11,6 @@ public class PickedOrderWindow {
 
 	MainWindow m;
 
-	public static String order;
-
 	ArrayList<CustomerOrder> customerOrder;
 	ArrayList<CustomerOrder> pickedOrder;
 
@@ -27,10 +25,10 @@ public class PickedOrderWindow {
 
 	}
 
-
+//Creates the GUI for the Picked Orders page
 	void initPickUI(){
 
-		JFrame pickWind = new JFrame("PickWindow");
+		JFrame pickWind = new JFrame("Warehouse System");
 		JLabel header = new JLabel("ORDER TO BE PICKED");
 		JTextArea orderScreen = new JTextArea();
 		JButton back = new JButton("BACK");			

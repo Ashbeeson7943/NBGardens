@@ -33,6 +33,7 @@ public class MainWindow extends JFrame {
 		return mainWindow;
 	}
 
+	//Used for transferring the orders between pages so they are not destroyed
 	MainWindow(ArrayList<CustomerOrder> co, ArrayList<CustomerOrder> po) {
 
 		this.po = po;
@@ -46,7 +47,7 @@ public class MainWindow extends JFrame {
 
 	//Creates the initial window
 	void initMainUI(){
-		mainWind = new JFrame("WareHouse System");
+		mainWind = new JFrame("Warehouse System");
 		JLabel header = new JLabel("WAREHOUSE MENU");
 		JButton sOW = new JButton("Show Orders Waiting");
 		JButton sPO = new JButton("Show order to be picked");

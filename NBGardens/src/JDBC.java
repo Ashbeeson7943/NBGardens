@@ -19,7 +19,7 @@ public class JDBC {
 	public void accessBD() {
 
 		try {
-			Class.forName( "JDBC");
+			Class.forName("JDBC");
 			System.out.println("Connecting to database...");
 			conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
@@ -48,16 +48,18 @@ public class JDBC {
 		try{
 			System.out.println("Creating statement...");
 			stmt = conn.createStatement();
-			String sql2 = "SELECT id, name";
+			String sql2 = "SELECT itemid, itemName FROM itemDB";
+			System.out.println(sql2);
 			ResultSet rs = stmt.executeQuery(sql2);
+			System.out.println(rs);
 			while (rs.next()) {
-				int id = rs.getInt("id");
-				String name = rs.getString("name");
+				int id = rs.getInt("itemid");
+				String name = rs.getString("itemName");
 				System.out.println("ID: " + id + ", name: " + name);
 			}
 			rs.close();
 		} catch(Exception e){
-
+			e.printStackTrace();
 		}finally{
 
 		}

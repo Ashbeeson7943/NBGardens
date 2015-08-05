@@ -11,7 +11,6 @@ public class OrderlistWindow {
 
 	MainWindow m;
 	ArrayList<String> orders = new ArrayList<>();
-	ArrayList<String> oL = new ArrayList<>();
 	boolean hasStarted = true;
 	ArrayList<CustomerOrder> customerOrder;
 	ArrayList<CustomerOrder> pickedOrder;
@@ -43,10 +42,10 @@ public class OrderlistWindow {
 		customerOrder.remove(0);
 
 	}
-
+	//Creates the GUI for the Orders Waiting page
 	void initOrderUI(){
 
-		JFrame orderWind = new JFrame("OrderWindow");
+		JFrame orderWind = new JFrame("Warehouse System");
 		JLabel header = new JLabel("ORDER LIST");
 		JTextArea orderList = new JTextArea();
 		JButton pick = new JButton("PICK");	
